@@ -55,7 +55,7 @@ namespace DatingApp
 
             app.UseRouting();
 
-            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:5001"));
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("*"));
 
             app.UseEndpoints(endpoints =>
             {

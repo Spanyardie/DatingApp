@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
         this.users = response;
         console.log(this.users);
       }, error => {
-        console.log("FUCKING HELL\n" + error);
+        console.log(error);
       })
   }
 }
