@@ -16,7 +16,7 @@ namespace DatingApp.Controllers
         [HttpGet("auth")]
         public ActionResult<string> GetSecret()
         {
-            return "secret text";
+            return Unauthorized("Invalid authorization");
         }
 
         [HttpGet("not-found")]
