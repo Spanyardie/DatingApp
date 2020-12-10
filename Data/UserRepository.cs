@@ -1,4 +1,7 @@
-﻿using DatingApp.Entities;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using DatingApp.DTOs;
+using DatingApp.Entities;
 using DatingApp.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,10 +14,12 @@ namespace DatingApp.Data
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public UserRepository(DataContext context)
+        public UserRepository(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
@@ -45,6 +50,21 @@ namespace DatingApp.Data
         public void Update(AppUser user)
         {
             _context.Entry(user).State = EntityState.Modified;
+        }
+
+        public async Task<IEnumerable<MemberDto>> GetMembersAsync()
+        {
+            return await _context.Users
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        public async Task<MemberDto> GetMemberAsync(string username)
+        {
+            return await _context.Users
+                .Where(x => x.UserName == username)
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
         }
     }
 }
