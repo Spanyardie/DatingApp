@@ -12,6 +12,7 @@ namespace DatingApp.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration )
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddDbContext<DataContext>(options =>
             {
