@@ -19,10 +19,10 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getMembers() {
-    return this.http.get<Member[]>(this.basUrl + 'users', httpOptions);
+    return this.http.get<Member[]>(this.basUrl + 'users');
   }
 
   getmember(username) {
-    return this.http.get<Member>(this.basUrl + 'users/' + username, httpOptions);
+    return this.http.get<Member>(this.basUrl + 'users/' + username);
   }
 }
