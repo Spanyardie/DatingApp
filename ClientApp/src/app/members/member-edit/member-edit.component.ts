@@ -1,0 +1,30 @@
+import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
+import { Member } from '../../_models/member';
+import { User } from '../../_models/user';
+import { AccountService } from '../../_services/account.service';
+import { MembersService } from '../../_services/members.service';
+
+@Component({
+  selector: 'app-member-edit',
+  templateUrl: './member-edit.component.html',
+  styleUrls: ['./member-edit.component.css']
+})
+export class MemberEditComponent implements OnInit {
+  member: Member;
+  user: User;
+
+  constructor(private accountService: AccountService, private memberService: MembersService) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe(usr => this.user = usr);
+  }
+
+  ngOnInit(): void {
+    this.loadMember();
+  }
+
+  loadMember() {
+    this.memberService.getmember(this.user.userName).subscribe(member => {
+      this.member = member;
+    });
+  }
+}
