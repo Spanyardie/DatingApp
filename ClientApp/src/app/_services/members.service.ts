@@ -7,7 +7,7 @@ import { Member } from '../_models/member';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    Authorization: 'Bearer' + JSON.parse(localStorage.getItem('user')).token
+    Authorization: 'Bearer' + JSON.parse(localStorage.getItem('user'))?.token
   })
 }
 
@@ -47,5 +47,13 @@ export class MembersService {
         this.members[index] = member;
       })
     );
+  }
+
+  setMainPhoto(photoId: number) {
+    return this.http.put(this.basUrl + 'users/set-main-photo/' + photoId, {});
+  }
+
+  deletePhoto(photoId: Number) {
+    return this.http.delete(this.basUrl + 'users/delete-photo/' + photoId);
   }
 }
