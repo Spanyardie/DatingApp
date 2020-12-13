@@ -48,4 +48,8 @@ export class MembersService {
       })
     );
   }
+
+  setMainPhoto(photoId: number) {
+    return this.http.put(this.basUrl + 'users/set-main-photo/' + photoId, {});
+  }
 }
