@@ -1,9 +1,7 @@
-import { Type } from '@angular/compiler/src/core';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
-import { DatepickerModule } from 'ngx-bootstrap/datepicker'
 
 @Component({
   selector: 'app-register',
@@ -14,6 +12,7 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
   registerForm: FormGroup;
+  maxDate: Date;
 
   constructor(
     private accountService: AccountService,
@@ -22,6 +21,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.maxDate = new Date();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   initializeForm() {
@@ -37,8 +38,10 @@ export class RegisterComponent implements OnInit {
         '',
         Validators.required
       ],
-      dateOfBirth:
-        new DatepickerModule(), 
+      dateOfBirth: [
+        '',
+        Validators.required
+      ],
       city: [
         '',
         Validators.required

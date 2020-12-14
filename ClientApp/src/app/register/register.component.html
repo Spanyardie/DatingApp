@@ -14,7 +14,7 @@
 
   <app-text-input [formControl]='registerForm.controls["username"]' [label]='"Username"' [type]='"text"'></app-text-input>
   <app-text-input [formControl]='registerForm.controls["knownAs"]' [label]='"Known as"' [type]='"text"'></app-text-input>
-  <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' [label]='"Date of birth"'></app-date-input>
+  <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' [label]='"Date of birth"' [maxDate]='maxDate'></app-date-input>
   <app-text-input [formControl]='registerForm.controls["city"]' [label]='"City"' [type]='"text"'></app-text-input>
   <app-text-input [formControl]='registerForm.controls["country"]' [label]='"Country"' [type]='"text"'></app-text-input>
   <app-text-input [formControl]='registerForm.controls["password"]' [label]='"Password"' [type]='"password"'></app-text-input>
