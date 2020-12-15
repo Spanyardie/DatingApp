@@ -30,7 +30,7 @@ export class MembersService {
     let params = new HttpParams();
 
     if (page !== null && itemsPerPage !== null) {
-      params = params.append('pageNumer', page.toString());
+      params = params.append('pageNumber', page.toString());
       params = params.append('pageSize', itemsPerPage.toString());
     }
     return this.http.get<Member[]>(this.basUrl + 'users', {observe: 'response', params}).pipe(
