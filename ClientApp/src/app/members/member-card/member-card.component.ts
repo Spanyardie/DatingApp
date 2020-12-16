@@ -10,12 +10,10 @@ import { Member } from '../../_models/member';
 
 export class MemberCardComponent implements OnInit {
   @Input() member: Member;
-  memberLastActive: string;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.memberLastActive = formatDate(this.member.lastActive, "dd-MM-YY", "en_GB");
   }
 
 }
