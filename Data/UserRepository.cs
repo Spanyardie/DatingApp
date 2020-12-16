@@ -56,8 +56,10 @@ namespace DatingApp.Data
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
             var query = _context.Users
+                .Where(u => u.Gender == userParams.Gender && u.UserName != userParams.CurrentUsername)
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .AsNoTracking();
+
             return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
         }
 
