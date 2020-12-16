@@ -7,6 +7,7 @@ var UserParams = /** @class */ (function () {
         this.maxAge = 99;
         this.pageNumber = 1;
         this.pageSize = 5;
+        this.orderBy = 'lastActive';
         this.gender = user.gender === 'female' ? 'male' : 'female';
     }
     return UserParams;

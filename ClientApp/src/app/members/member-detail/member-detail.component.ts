@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { formatDate } from '@angular/common';
 import { Member } from '../../_models/member';
 import { MembersService } from '../../_services/members.service';
 
@@ -13,6 +14,8 @@ export class MemberDetailComponent implements OnInit {
   member: Member;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  memberlastActive: string;
+  memberSince: string;
 
   constructor(private memberService: MembersService, private route: ActivatedRoute) { }
 
@@ -46,6 +49,8 @@ export class MemberDetailComponent implements OnInit {
     this.memberService.getmember(this.route.snapshot.paramMap.get('userName')).subscribe(member => {
       this.member = member;
       this.galleryImages = this.getImages();
+      this.memberlastActive = formatDate(member.lastActive, "dd-MMMM-YYYY", "en_GB");
+      this.memberSince = formatDate(member.created, "dd-MMMM-YY", "en_GB");
     })
   }
 }
