@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Member } from '../../_models/member';
 import { Pagination } from '../../_models/pagination';
@@ -18,6 +17,7 @@ export class MemberListComponent implements OnInit {
   pagination: Pagination;
   userParams: UserParams;
   user: User;
+  genderList = [{ value: 'male', display: 'Males' }, { value: 'female', display: 'Females' }];
 
   constructor(private memberService: MembersService, private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
@@ -40,6 +40,11 @@ export class MemberListComponent implements OnInit {
 
   pageChanged(event: any) {
     this.userParams.pageNumber = event.page;
+    this.loadMembers();
+  }
+
+  resetFilters() {
+    this.userParams = new UserParams(this.user);
     this.loadMembers();
   }
 }
