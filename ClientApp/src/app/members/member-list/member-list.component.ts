@@ -25,7 +25,6 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMembers();
-    console.log(this.userParams);
   }
 
   loadMembers() {
