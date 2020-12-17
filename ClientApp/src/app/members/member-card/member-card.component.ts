@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Member } from '../../_models/member';
 
