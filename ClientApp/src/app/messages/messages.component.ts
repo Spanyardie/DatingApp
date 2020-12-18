@@ -9,7 +9,7 @@ import { MessageService } from '../_services/message.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  messages: Message[];
+  messages: Message[] = [];
   pagination: Pagination;
   container = "Unread";
   pageNumber = 1;
@@ -18,7 +18,6 @@ export class MessagesComponent implements OnInit {
   constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.loadMessages();
   }
 
   loadMessages() {
@@ -30,6 +29,5 @@ export class MessagesComponent implements OnInit {
 
   pageChanged(event: any) {
     this.pageNumber = event.page;
-    this.loadMessages();
   }
 }
