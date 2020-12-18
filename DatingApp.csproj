@@ -44,6 +44,7 @@
     <None Remove="ClientApp\src\app\_models\photo.ts" />
     <None Remove="ClientApp\src\app\_models\user.ts" />
     <None Remove="ClientApp\src\app\_models\userParams.ts" />
+    <None Remove="ClientApp\src\app\_resolvers\member-detail-resolver.ts" />
     <None Remove="ClientApp\src\app\_services\paginationHelper.ts" />
   </ItemGroup>
 
@@ -61,6 +62,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\_models\photo.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\userParams.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_resolvers\member-detail-resolver.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_services\paginationHelper.ts" />
   </ItemGroup>
 
