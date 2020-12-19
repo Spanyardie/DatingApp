@@ -54,8 +54,6 @@ export class MembersService {
 
     let params = getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
 
-    console.log(userParams);
-
     params = params.append('minAge', userParams.minAge.toString());
     params = params.append('maxAge', userParams.maxAge.toString());
     params = params.append('gender', userParams.gender);
