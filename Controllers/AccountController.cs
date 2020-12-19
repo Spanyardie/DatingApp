@@ -5,10 +5,7 @@ using DatingApp.Entities;
 using DatingApp.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DatingApp.Controllers
@@ -33,11 +30,7 @@ namespace DatingApp.Controllers
 
             var user = _mapper.Map<AppUser>(registerDto);
 
-            using var hmac = new HMACSHA512();
-
             user.UserName = registerDto.UserName.ToLower();
-            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
-            user.PasswordSalt = hmac.Key;
 
             _context.Users.Add(user);
 
@@ -60,15 +53,6 @@ namespace DatingApp.Controllers
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
 
             if (user == null) return Unauthorized("Invalid username");
-
-            using var hmac = new HMACSHA512(user.PasswordSalt);
-
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
-
-            if(!computedHash.SequenceEqual(user.PasswordHash))
-            {
-                return Unauthorized("Invalid password");
-            }
 
             return new UserDto
             {
