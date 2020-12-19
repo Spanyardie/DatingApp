@@ -39,10 +39,13 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\_models\member.ts" />
+    <None Remove="ClientApp\src\app\_models\message.ts" />
     <None Remove="ClientApp\src\app\_models\pagination.ts" />
     <None Remove="ClientApp\src\app\_models\photo.ts" />
     <None Remove="ClientApp\src\app\_models\user.ts" />
     <None Remove="ClientApp\src\app\_models\userParams.ts" />
+    <None Remove="ClientApp\src\app\_resolvers\member-detail-resolver.ts" />
+    <None Remove="ClientApp\src\app\_services\paginationHelper.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,15 +53,17 @@
     <Folder Include="ClientApp\src\app\errors\" />
     <Folder Include="ClientApp\src\app\_forms\" />
     <Folder Include="ClientApp\src\app\_guards\" />
-    <Folder Include="ClientApp\src\app\_services\" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\_models\member.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_models\message.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\pagination.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\photo.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\userParams.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_resolvers\member-detail-resolver.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_services\paginationHelper.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
