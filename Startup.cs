@@ -44,7 +44,10 @@ namespace DatingApp
 
             app.UseRouting();
 
-            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("*"));
+            app.UseCors(policy => policy.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .WithOrigins("*"));
 
             app.UseAuthentication();
             app.UseAuthorization();
