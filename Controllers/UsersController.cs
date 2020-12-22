@@ -26,7 +26,7 @@ namespace DatingApp.Controllers
             _photoService = photoService;
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles ="Admin,Member")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
