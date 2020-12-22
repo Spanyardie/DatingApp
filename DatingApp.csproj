@@ -17,9 +17,15 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="CloudinaryDotNet" Version="1.14.0" />
     <PackageReference Include="font-awesome" Version="4.7.0" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -51,6 +57,9 @@
   <ItemGroup>
     <Folder Include="ClientApp\for-intellisense-only\" />
     <Folder Include="ClientApp\src\app\errors\" />
+    <Folder Include="ClientApp\src\app\Admin\" />
+    <Folder Include="ClientApp\src\app\modals\" />
+    <Folder Include="ClientApp\src\app\_directives\" />
     <Folder Include="ClientApp\src\app\_forms\" />
     <Folder Include="ClientApp\src\app\_guards\" />
   </ItemGroup>

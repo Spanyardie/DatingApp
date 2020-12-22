@@ -1,7 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-
-namespace DatingApp.Data
+﻿namespace DatingApp.Data
 {
     public class Seed
     {
@@ -11,9 +8,6 @@ namespace DatingApp.Data
 
             foreach(var user in users)
             {
-                using var hmac = new HMACSHA512();
-                user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(user.UserName));
-                user.PasswordSalt = hmac.Key;
                 context.Users.Update(user);
             }
         }
