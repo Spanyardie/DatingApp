@@ -47,10 +47,13 @@ namespace DatingApp
             app.UseCors(policy => policy.AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
-                .WithOrigins("https://localhost:5001"));
+                .WithOrigins("https://localhost:443"));
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

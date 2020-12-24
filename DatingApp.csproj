@@ -11,6 +11,7 @@
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <StartupObject>DatingApp.Program</StartupObject>
+    <UserSecretsId>caa52056-0f89-40de-85c9-89226b2251c6</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
