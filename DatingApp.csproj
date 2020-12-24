@@ -57,7 +57,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\for-intellisense-only\" />
+    <!--<Folder Include="ClientApp\for-intellisense-only\" />-->
     <Folder Include="ClientApp\src\app\errors\" />
     <Folder Include="ClientApp\src\app\Admin\" />
     <Folder Include="ClientApp\src\app\modals\" />
