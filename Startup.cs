@@ -47,7 +47,7 @@ namespace DatingApp
             app.UseCors(policy => policy.AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
-                .WithOrigins("https://localhost:443"));
+                .WithOrigins("https://localhost:5001"));
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -60,6 +60,7 @@ namespace DatingApp
                 endpoints.MapControllers();
                 endpoints.MapHub<PresenceHub>("hubs/presence");
                 endpoints.MapHub<MessageHub>("hubs/message");
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
 
             app.UseSpa(spa =>
