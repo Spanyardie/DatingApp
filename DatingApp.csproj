@@ -44,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\_models\group.ts" />
     <None Remove="ClientApp\src\app\_models\member.ts" />
     <None Remove="ClientApp\src\app\_models\message.ts" />
     <None Remove="ClientApp\src\app\_models\pagination.ts" />
@@ -65,6 +66,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\_models\group.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\member.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\message.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\pagination.ts" />

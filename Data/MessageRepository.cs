@@ -113,5 +113,13 @@ namespace DatingApp.Data
         {
             _context.Groups.Add(group);
         }
+
+        public async Task<Group> GetGroupForConnection(string connectionId)
+        {
+            return await _context.Groups
+                .Include(c => c.Connections)
+                .Where(c => c.Connections.Any(x => x.ConnectionId == connectionId))
+                .FirstOrDefaultAsync();
+        }
     }
 }
