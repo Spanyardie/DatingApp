@@ -25,9 +25,11 @@ namespace DatingApp.Data
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
         {
-            return await _context.Users
-                .Include(p => p.Photos)
+            var users = await _context.Users
+                .Include(p => p.Photos.Where(ph => ph.IsApproved))
                 .ToListAsync();
+
+            return users;
         }
 
         public async Task<AppUser> GetUserByIdAsync(int id)

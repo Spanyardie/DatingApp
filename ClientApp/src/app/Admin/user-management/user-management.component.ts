@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { RolesModalComponent } from '../../modals/roles-modal/roles-modal.component';
 import { User } from '../../_models/user';
 import { AdminService } from '../../_services/admin.service';
@@ -23,6 +23,7 @@ export class UserManagementComponent implements OnInit {
   getUsersWithRoles() {
     this.adminService.getUsersWithRoles().subscribe(users => {
       this.users = users;
+      console.log(users);
     });
   }
 
@@ -40,7 +41,7 @@ export class UserManagementComponent implements OnInit {
         roles: [...values.filter(el => el.checked === true).map(el => el.name)]
       };
       if (rolesToUpdate) {
-        this.adminService.updateUserRoles(user.userName, rolesToUpdate.roles).subscribe(() => {
+        this.adminService.updateUserRoles(user.username, rolesToUpdate.roles).subscribe(() => {
           user.roles = [...rolesToUpdate.roles]
         })
       }

@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserParams = void 0;
 var UserParams = /** @class */ (function () {
     function UserParams(user) {
         this.minAge = 18;
@@ -12,5 +9,5 @@ var UserParams = /** @class */ (function () {
     }
     return UserParams;
 }());
-exports.UserParams = UserParams;
+export { UserParams };
 //# sourceMappingURL=userParams.js.map
