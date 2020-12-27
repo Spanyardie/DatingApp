@@ -1,13 +1,14 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { Member } from '../_models/member';
 import { User } from '../_models/user';
 import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
-import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
+import { getPaginatedResult } from './paginationHelper';
+import { getPaginationHeaders } from './paginationHelper';
 
 const httpOptions = {
   headers: new HttpHeaders({

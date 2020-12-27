@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
-import { formatDate } from '@angular/common';
 import { Member } from '../../_models/member';
-import { MembersService } from '../../_services/members.service';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Message } from '../../_models/message';
 import { MessageService } from '../../_services/message.service';

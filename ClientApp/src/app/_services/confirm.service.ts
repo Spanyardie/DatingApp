@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
-import { BsModalRef } from '../../../for-intellisense-only/ngx-bootstrap/modal/public_api';
+import { BsModalRef } from 'ngx-bootstrap/modal/public_api';
 import { ConfirmDialogComponent } from '../modals/confirm-dialog/confirm-dialog.component';
 
 @Injectable({
