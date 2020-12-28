@@ -47,7 +47,7 @@ namespace DatingApp.Controllers
         }
 
         [Authorize(Roles ="Member")]
-        [HttpGet("{username}", Name = "GetUser")]
+        [HttpGet("{userName}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
             return await _unitOfWork.UserRepository.GetMemberAsync(username);

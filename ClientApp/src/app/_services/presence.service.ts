@@ -29,15 +29,15 @@ export class PresenceService {
     this.hubConnection.start()
       .catch(error => console.log(error));
 
-    this.hubConnection.on("UserIsOnline", username => {
+    this.hubConnection.on("UserIsOnline", userName => {
       this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
-        this.onlineUsersSource.next([...usernames, username]);
+        this.onlineUsersSource.next([...usernames, userName]);
       })
     });
 
-    this.hubConnection.on("UserIsOffline", username => {
+    this.hubConnection.on("UserIsOffline", userName => {
       this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
-        this.onlineUsersSource.next([...usernames.filter(x => x !== username)]);
+        this.onlineUsersSource.next([...usernames.filter(x => x !== userName)]);
       })
     });
 
@@ -45,11 +45,11 @@ export class PresenceService {
       this.onlineUsersSource.next(usernames);
     });
 
-    this.hubConnection.on("NewMessageReceived", ({ username, knownAs }) => {
+    this.hubConnection.on("NewMessageReceived", ({ userName, knownAs }) => {
       this.toaster.info(knownAs + " has sent you a message!")
         .onTap
         .pipe(take(1))
-        .subscribe(() => this.router.navigateByUrl("/members/" + username + "?tab=3"));
+        .subscribe(() => this.router.navigateByUrl("/members/" + userName + "?tab=3"));
     });
   }
 

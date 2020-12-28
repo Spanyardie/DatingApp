@@ -30,7 +30,7 @@ namespace DatingApp.Controllers
                 .Select(u => new
                 {
                     u.Id,
-                    Username = u.UserName,
+                    userName = u.UserName,
                     Roles = u.UserRoles.Select(r => r.Role.Name).ToList()
                 })
                 .ToListAsync();
@@ -45,7 +45,7 @@ namespace DatingApp.Controllers
             return Ok("Admins or moderators can see this");
         }
 
-        [HttpPost("edit-roles/{username}")]
+        [HttpPost("edit-roles/{userName}")]
         public async Task<ActionResult> EditRoles(string username, [FromQuery] string roles)
         {
             var selectedRoles = roles.Split(",").ToArray();

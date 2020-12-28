@@ -28,11 +28,11 @@ namespace DatingApp.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.UserName)) return BadRequest("User name is taken");
+            if (await UserExists(registerDto.userName)) return BadRequest("User name is taken");
 
             var user = _mapper.Map<AppUser>(registerDto);
 
-            user.UserName = registerDto.UserName.ToLower();
+            user.UserName = registerDto.userName.ToLower();
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded) return BadRequest(result.Errors);
@@ -42,7 +42,7 @@ namespace DatingApp.Controllers
 
             return new UserDto
             {
-                UserName = user.UserName,
+                userName = user.UserName,
                 Token = await _tokenService.CreateToken(user),
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
@@ -54,7 +54,7 @@ namespace DatingApp.Controllers
         {
             var user = await _userManager.Users
                 .Include(p => p.Photos)
-                .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName.ToLower());
+                .SingleOrDefaultAsync(x => x.UserName == loginDto.userName.ToLower());
 
             if (user == null) return Unauthorized("Invalid username");
 
@@ -63,7 +63,7 @@ namespace DatingApp.Controllers
 
             return new UserDto
             {
-                UserName = user.UserName,
+                userName = user.UserName,
                 Token = await _tokenService.CreateToken(user),
                 PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
                 KnownAs = user.KnownAs,
