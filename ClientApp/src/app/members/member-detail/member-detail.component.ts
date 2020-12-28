@@ -69,7 +69,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   }
 
   loadMessages() {
-    this.messageService.getMessageThread(this.member.username).subscribe(messages => {
+    this.messageService.getMessageThread(this.member.userName).subscribe(messages => {
       this.messages = messages;
     })
   }
@@ -77,7 +77,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   onTabActivated(data: TabDirective) {
     this.activeTab = data;
     if (this.activeTab.heading == 'Messages' && this.messages.length === 0) {
-      this.messageService.createHubConnection(this.user, this.member.username);
+      this.messageService.createHubConnection(this.user, this.member.userName);
     }
     else {
       this.messageService.stopHubConnection();

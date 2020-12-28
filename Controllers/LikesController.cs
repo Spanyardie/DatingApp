@@ -20,7 +20,7 @@ namespace DatingApp.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost("{username}")]
+        [HttpPost("{userName}")]
         public async Task<ActionResult> AddLike(string userName)
         {
             var sourceUserId = User.GetUserId();

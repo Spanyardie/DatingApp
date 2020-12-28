@@ -78,7 +78,7 @@ namespace DatingApp.SignalR
 
             var group = await _unitOfWork.MessageRepository.GetMessageGroup(groupName);
 
-            if(group.Connections.Any(x => x.Username == recipient.UserName))
+            if(group.Connections.Any(x => x.userName == recipient.UserName))
             {
                 message.DateRead = DateTime.UtcNow;
             }

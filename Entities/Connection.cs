@@ -9,10 +9,10 @@
         public Connection(string connectionId, string username)
         {
             ConnectionId = connectionId;
-            Username = username;
+            userName = username;
         }
 
         public string ConnectionId { get; set; }
-        public string Username { get; set; }
+        public string userName { get; set; }
     }
 }

@@ -55,7 +55,7 @@ namespace DatingApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessagesForUser([FromQuery] MessageParams messageParams)
         {
-            messageParams.Username = User.GetUsername();
+            messageParams.userName = User.GetUsername();
 
             var messages = await _unitOfWork.MessageRepository.GetMessagesForUser(messageParams);
 

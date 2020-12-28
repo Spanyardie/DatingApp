@@ -21,8 +21,8 @@
       </li>
     </ul>
       <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-        <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}" />
-        <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs || user.username | titlecase}}</a>
+        <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.userName}}" />
+        <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs || user.userName | titlecase}}</a>
         <div class="dropdown-menu mt-3" href="#" *dropdownMenu>
           <a class="dropdown-item" routerLink="/member/edit" routerLinkActive="active">Edit profile</a>
           <div class="dropdown-divider"></div>
@@ -32,7 +32,7 @@
        <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
          <input
                 name="username"
-                [(ngModel)]="model.username"
+                [(ngModel)]="model.userName"
                 class="form-control mr-sm-2"
                 type="text"
                 placeholder="Username">

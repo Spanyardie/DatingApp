@@ -12,7 +12,7 @@ import { MessageService } from '../../_services/message.service';
 export class MemberMessagesComponent implements OnInit {
   @ViewChild('messageForm') messageForm: NgForm;
   @Input() messages: Message[];
-  @Input() username: string;
+  @Input() userName: string;
   messageContent: string;
 
   constructor(public messageService: MessageService) { }
@@ -21,7 +21,7 @@ export class MemberMessagesComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messageService.sendMessage(this.username, this.messageContent).then(() => {
+    this.messageService.sendMessage(this.userName, this.messageContent).then(() => {
       this.messageForm.reset();
     })
   }
