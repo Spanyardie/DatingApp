@@ -74,6 +74,8 @@ namespace DatingApp.Data
                 .WithMany(m => m.MessagesSent)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Photo>().HasQueryFilter(p => p.IsApproved);
+
             modelBuilder.ApplyUtcDateTimeConverter();
         }
     }

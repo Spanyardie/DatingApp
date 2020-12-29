@@ -7,5 +7,6 @@
         public int MinAge { get; set; } = 18;
         public int MaxAge { get; set; } = 99;
         public string OrderBy { get; set; } = "lastActive";
+        public bool PhotosApproved { get; set; } = true;
     }
 }
