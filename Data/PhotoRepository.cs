@@ -3,7 +3,6 @@ using DatingApp.Entities;
 using DatingApp.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,16 +17,18 @@ namespace DatingApp.Data
             _context = context;
         }
 
-        public Photo GetPhotoById(int id)
+        public async Task<Photo> GetPhotoById(int id)
         {
-            return _context.Photos
+            var photo = await _context.Photos
                 .IgnoreQueryFilters()
-                .SingleOrDefault(x => x.Id == id);
+                .SingleOrDefaultAsync(x => x.Id == id);
+
+            return await Task.FromResult(photo);
         }
 
-        public IEnumerable<PhotoForApprovalDto> GetUnapprovedPhotos()
+        public async Task<IEnumerable<PhotoForApprovalDto>> GetUnapprovedPhotos()
         {
-            return _context.Photos
+            var photos = await _context.Photos
                 .IgnoreQueryFilters()
                 .Where(p => p.IsApproved == false)
                 .Select(u => new PhotoForApprovalDto
@@ -36,7 +37,11 @@ namespace DatingApp.Data
                     Username = u.AppUser.UserName,
                     Url = u.Url,
                     IsApproved = u.IsApproved
-                }).ToList();
+                }).ToListAsync();
+
+            var enumPhoto = photos.AsEnumerable();
+
+            return enumPhoto;
         }
 
         public void RemovePhoto(Photo photo)

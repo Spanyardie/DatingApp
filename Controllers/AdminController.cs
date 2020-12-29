@@ -51,7 +51,7 @@ namespace DatingApp.Controllers
         [HttpGet("photos-to-moderate")]
         public async Task<ActionResult<IEnumerable<PhotoForApprovalDto>>> GetPhotosForModeration()
         {
-            var photos = _unitOfWork.PhotoRepository.GetUnapprovedPhotos();
+            var photos = await _unitOfWork.PhotoRepository.GetUnapprovedPhotos();
 
             if (photos == null) return BadRequest("Failed to find unapproved photos");
 
@@ -64,7 +64,7 @@ namespace DatingApp.Controllers
         [HttpPost("approve-photo/{photoId}")]
         public async Task<ActionResult> ApprovePhoto(int photoId)
         {
-            var photo = _unitOfWork.PhotoRepository.GetPhotoById(photoId);
+            var photo = await _unitOfWork.PhotoRepository.GetPhotoById(photoId);
             if (photo == null) return NotFound("Could not find photo");
 
             photo.IsApproved = true;
@@ -81,7 +81,7 @@ namespace DatingApp.Controllers
         [HttpPost("reject-photo/{photoId}")]
         public async Task<ActionResult> RejectPhoto(int photoId)
         {
-            var photo = _unitOfWork.PhotoRepository.GetPhotoById(photoId);
+            var photo = await _unitOfWork.PhotoRepository.GetPhotoById(photoId);
 
             if(photo.PublicId != null)
             {
