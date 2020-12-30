@@ -55,12 +55,12 @@ namespace DatingApp.Controllers
 
             if (photos == null) return BadRequest("Failed to find unapproved photos");
 
-            if (!photos.Any()) return NotFound("There are no photos that require approval at this time");
+            if (!photos.Any()) return NoContent();
 
             return Ok(photos);
         }
 
-        [Authorize(Policy ="ModeratePhotoRole")]
+        [Authorize(Policy = "ModeratePhotoRole")]
         [HttpPost("approve-photo/{photoId}")]
         public async Task<ActionResult> ApprovePhoto(int photoId)
         {

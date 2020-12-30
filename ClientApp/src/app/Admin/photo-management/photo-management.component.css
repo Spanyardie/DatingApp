@@ -1,0 +1,10 @@
+.img-thumbnail {
+  margin: 25px;
+  width: 150px;
+  height: 150px;
+}
+
+.card-image-wrapper {
+  overflow: hidden;
+  position: relative;
+}
