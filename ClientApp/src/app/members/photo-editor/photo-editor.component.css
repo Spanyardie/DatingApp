@@ -8,6 +8,22 @@ img.img-thumbnail {
     border: dotted 3px red;
 }
 
+.image-awaiting-approval-text {
+    position:absolute;
+    bottom: 30%;
+    left: 2em;
+    width: 70px;
+    color: red;
+}
+
 input[type=file] {
     color: transparent;
+}
+
+.approved {
+    opacity: 1;
+}
+
+.awaiting-approval {
+    opacity: 0.7;
 }

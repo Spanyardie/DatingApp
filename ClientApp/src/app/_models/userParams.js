@@ -5,6 +5,7 @@ var UserParams = /** @class */ (function () {
         this.pageNumber = 1;
         this.pageSize = 5;
         this.orderBy = 'lastActive';
+        this.photosApproved = true;
         this.gender = user.gender === 'female' ? 'male' : 'female';
     }
     return UserParams;

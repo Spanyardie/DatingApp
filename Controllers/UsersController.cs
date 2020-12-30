@@ -50,7 +50,9 @@ namespace DatingApp.Controllers
         [HttpGet("{userName}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            return await _unitOfWork.UserRepository.GetMemberAsync(username);
+            var currentUsername = User.GetUsername();
+
+            return await _unitOfWork.UserRepository.GetMemberAsync(username, isCurrentUser: currentUsername == username);
         }
 
         [HttpPut]
@@ -84,11 +86,6 @@ namespace DatingApp.Controllers
                 Url = result.SecureUrl.AbsoluteUri,
                 PublicId = result.PublicId
             };
-
-            if(user.Photos.Count == 0)
-            {
-                photo.IsMain = true;
-            }
 
             user.Photos.Add(photo);
 
@@ -127,7 +124,7 @@ namespace DatingApp.Controllers
 
             if (photo == null) return NotFound();
 
-            if (photo.IsMain) return BadRequest("You cannot delete you main photo!");
+            if (photo.IsMain) return BadRequest("You cannot delete your main photo!");
 
             if(photo.PublicId != null)
             {
